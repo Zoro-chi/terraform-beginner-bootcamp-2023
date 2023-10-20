@@ -1,4 +1,10 @@
 terraform {
+  cloud {
+    organization = "junzy"
+    workspaces {
+      name = "terra-house-V"
+    }
+  }
   required_providers {
     random = {
       source = "hashicorp/random"
@@ -11,11 +17,11 @@ terraform {
   }
 }
 
-provider "random" {
-  # Configuration options
+provider "aws" {
+
 }
 
-provider "aws" {
+provider "random" {
   # Configuration options
 }
 
@@ -28,7 +34,7 @@ resource "random_string" "bucket_name" {
 }
 
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket
-resource "aws_s3_bucket" "example" {
+resource "aws_s3_bucket" "terraform_s3_bucket" {
   bucket = random_string.bucket_name.result
 }
 
