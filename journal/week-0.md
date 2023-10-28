@@ -1,5 +1,10 @@
-
 # Terraform Beginner Bootcamp 2023 - Week 0
+
+# Table of contents
+
+- [Terraform Beginner Bootcamp 2023](#terraform-beginner-bootcamp-2023)
+  - [Terraform Basics](#terraform-basics)
+  - [Automated generating Terraform Cloud Credentials](#automated-generating-terraform-cloud-credentials)
 
 ## Terraform Basics
 
