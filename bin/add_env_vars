@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# Source the .env file to load the environment variables
+if [ -f .env ]; then
+  set -o allexport
+  source .env
+  set +o allexport
+else
+  echo "Error: The .env file is missing or not found."
+  exit 1
+fi
+
+
+
+
+
