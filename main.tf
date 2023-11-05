@@ -1,10 +1,10 @@
 terraform {
-  # cloud {
-  #   organization = "junzy"
-  #   workspaces {
-  #     name = "terra-house-V"
-  #   }
-  # }
+  cloud {
+    organization = "junzy"
+    workspaces {
+      name = "terraform-cloud"
+    }
+  }
 }
 
 module "terrahouse_aws" {
