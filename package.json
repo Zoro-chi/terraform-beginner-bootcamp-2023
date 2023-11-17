@@ -1,4 +1,7 @@
 {
+	"scripts": {
+		"start": "cd ./terratowns_mock_server && bundle exec ruby server.rb"
+	},
 	"dependencies": {
 		"http-server": "^14.1.1"
 	}
