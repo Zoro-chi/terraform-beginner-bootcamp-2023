@@ -38,3 +38,5 @@ terraform.rc
 .env.*
 
 node_modules
+
+terraform-provider-terratowns/terraform-provider-terratowns_v*
