@@ -28,6 +28,7 @@ provider "terratowns" {
   user_uuid=env("TERRATOWNS_USER_UUID") 
   token=env("TERRATOWNS_TOKEN")
 }
+
 # resource "terratowns_home" "home" {
 #   name = "How to play Arcanum in 2023!"
 #   description = <<DESCRIPTION
