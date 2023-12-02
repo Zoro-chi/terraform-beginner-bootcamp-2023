@@ -5,22 +5,12 @@ terraform {
       version = "1.0.0"
     }
   }
-  # cloud {
-  #   organization = "junzy"
-  #   workspaces {
-  #     name = "terra-house-V"
-  #   }
-  # }
-}
-
-module "terrahouse_aws" {
-  source = "./modules/terrahouse_aws"
-  user_uuid = var.teacherseat_user_uuid
-  bucket_name = var.bucket_name
-  index_html_filepath = var.index_html_filepath
-  error_html_filepath = var.error_html_filepath
-  content_version = var.content_version
-  assets_path = var.assets_path
+  cloud {
+    organization = "junzy"
+    workspaces {
+      name = "terra-house-V"
+    }
+  }
 }
 
 provider "terratowns" {
@@ -29,13 +19,36 @@ provider "terratowns" {
   token = var.terratowns_access_token
 }
 
-resource "terratowns_home" "home" {
+module "home_capex_villans" {
+  source = "./modules/terrahome_aws"
+  user_uuid = var.teacherseat_user_uuid
+  public_path = var.capex_villans.public_path
+  content_version = var.capex_villans.content_version
+}
+
+resource "terratowns_home" "home_capex_villans" {
   name = "Capex Villans HQ"
   description = <<DESCRIPTION
 Welcome to the future of FPS gaming. A new battle royale experience.
 DESCRIPTION
-  domain_name = module.terrahouse_aws.cloudfront_url
-  # domain_name = "3thn6yx.cloudfront.net"
+  domain_name = module.home_capex_villans.domain_name
   town = "missingo"
-  content_version = 1
+  content_version = var.capex_villans.content_version
+}
+
+module "home_crpto_punks" {
+  source = "./modules/terrahome_aws"
+  user_uuid = var.teacherseat_user_uuid
+  public_path = var.crypto_punks.public_path
+  content_version = var.crypto_punks.content_version
+}
+
+resource "terratowns_home" "home_crpto_punks" {
+  name = "Crypto Punks"
+  description = <<DESCRIPTION
+The home of the craziest crypto punks in the world.
+DESCRIPTION
+  domain_name = module.home_crpto_punks.domain_name
+  town = "missingo"
+  content_version = var.crypto_punks.content_version
 }
